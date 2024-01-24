@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "//": "omitted...",
+    "redis": "https://deno.land/x/redis@v0.27.2/mod.ts",
+    "std/": "https://deno.land/std@0.160.0/"
+  }
+}

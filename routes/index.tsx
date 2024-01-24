@@ -1,25 +1,34 @@
-import { useSignal } from "@preact/signals";
+import { asset, Head } from "$fresh/runtime.ts";
+import { signal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
+import { ObjectId } from "npm:mongodb";
+import { TUser } from "../models/users.ts";
+import { Handlers, PageProps, RouteContext } from "$fresh/server.ts";
+import { ServerState } from "./_middleware.ts";
 
-export default function Home() {
-  const count = useSignal(3);
+//import { connectToCluster } from "../mongodb/connect-to-cluster.ts";
+
+export const handler: Handlers<TUser<ObjectId>> = {
+  async GET(req, ctx) {
+    console.log(ctx.state);
+    //const user = await User.findOne({ username: "esben" });
+    return ctx.render(ctx.state);
+  },
+};
+
+export default function Home(props: PageProps<ServerState>) {
+  // temporary
+  // await User.insertOne({
+  //   username: "esben",
+  //   password: "test",
+  //   email: "e@d.dk",
+  // });
+
   return (
-    <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <img
-          class="my-6"
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
-        />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
-      </div>
-    </div>
+    <>
+      <p>
+        dd: {props.data?.username}
+      </p>
+    </>
   );
 }

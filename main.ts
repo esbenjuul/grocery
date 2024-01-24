@@ -4,10 +4,15 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
+import { load } from "https://deno.land/std@0.212.0/dotenv/mod.ts";
 import "$std/dotenv/load.ts";
 
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 import config from "./fresh.config.ts";
+
+const env = await load();
+const uri = env["DB_URI"];
+
 
 await start(manifest, config);
