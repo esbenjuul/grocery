@@ -18,6 +18,7 @@ export const comparePasswords = async (
 ) => {
   return bcrypt.compare(password, user.password);
 };
+
 export const createSecurePassword = async (password: string) => {
   try {
     const salt = await bcrypt.genSalt();
@@ -27,22 +28,3 @@ export const createSecurePassword = async (password: string) => {
     console.error(err);
   }
 };
-// async function init() {
-//   let mongoClient;
-
-//   try {
-//     console.log("start user");
-//     mongoClient = await connectToCluster();
-//     const db = mongoClient?.db("grocery");
-//     const collection = db?.collection("users");
-//     const user = {
-//       username: "esben",
-//       password: "test",
-//     };
-//     await collection?.insertOne(user);
-//   } finally {
-//     await mongoClient?.close();
-//   }
-// }
-
-// init();

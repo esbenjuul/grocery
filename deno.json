@@ -29,7 +29,9 @@
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
     "postcss/": "https://deno.land/x/postcss@8.4.16/",
-    "std/": "https://deno.land/std@0.160.0/"
+    "std/": "https://deno.land/std@0.160.0/",
+    "deno_session": "https://deno.land/x/fresh_session@beta-0.3.0/mod.ts",
+    "redis": "https://deno.land/x/redis/mod.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

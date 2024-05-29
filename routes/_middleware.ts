@@ -2,16 +2,17 @@
 
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { getCookies } from "std/http/cookie.ts";
-import { TUser, User } from "../models/users.ts";
+import { Session } from "deno_session";
 
 type User = {
   id: number;
-  name: string;
+  username: string;
   avatar: string;
 };
 
 export type ServerState = {
-  user: User | null;
+  token: string;
+  session: Session<"user", "success">;
   error: { code: number; msg: string } | null;
 };
 
@@ -19,36 +20,25 @@ export async function handler(
   req: Request,
   ctx: MiddlewareHandlerContext<ServerState>,
 ) {
-  const url = new URL(req.url);
+  const { pathname } = new URL(req.url);
   const cookies = getCookies(req.headers);
   const access_token = cookies.auth;
-  console.log(cookies);
-  // console.log(url.pathname);
-  const headers = new Headers();
-  headers.set("location", "/");
 
-  if (!access_token) {
-    // Can't use 403 if we want to redirect to home page.
-    return new Response(null, { headers, status: 303 });
+  if (["/", "/login"].includes(pathname) && !access_token) {
+    // TODO: redirect to login;
+    console.log("path", pathname);
   }
 
   if (access_token) {
     // Here, we will have an actual lookup of user data in the future.
-    //console.log("at", JSON.parse(access_token));
-    console.log("at", access_token);
-    //const user = await User.find({ _id: access_token });
-    //console.log(user);
-    const user_data = {
-      id: 2,
-      name: "esben",
-      avatar: "esben",
-    };
 
-    if (!user_data) {
-      // return new Response(null, { headers, status: 303 });
-    }
-
-    ctx.state.user = user_data;
+    ctx.state.token = access_token;
+  } else if (!pathname.includes("/login")) {
+    // console.log("dd");
+    // return new Response(null, {
+    //   status: 307,
+    //   headers: { Location: "/login" },
+    // });
   }
 
   return await ctx.next();
