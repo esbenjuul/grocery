@@ -1,4 +1,4 @@
-import { Avatar } from "@/components/header/avatar.tsx";
+import { Avatar } from "@/components/header/Avatar.tsx";
 
 export default function Home() {
   return (
