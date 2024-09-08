@@ -22,7 +22,6 @@ export const comparePasswords = async (
 export const createSecurePassword = async (password: string) => {
   try {
     const salt = await bcrypt.genSalt();
-    console.log(salt);
     return await bcrypt.hash(password, salt);
   } catch (err) {
     console.error(err);

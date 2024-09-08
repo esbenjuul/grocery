@@ -15,10 +15,13 @@
     --color-white: #fff;
 
     --color-background-01: #f5f5f5;
+    --color-background-03: #fefefe;
     
     --color-bg-button: var(--color-purple-700);
     --color-bg-button-hover: var(--color-purple-800);
     --color-bg-button-active: var(--color-purple-900);
 
     --color-font-cta: var(--color-white);
+
+
 }

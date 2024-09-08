@@ -1,5 +1,5 @@
 import { HandlerContext } from "$fresh/server.ts";
-import { createSecurePassword, TUser, User } from "../../models/users.ts";
+import { createSecurePassword, User } from "../../models/users.ts";
 
 export const handler = async (
   _req: Request,
@@ -20,7 +20,6 @@ export const handler = async (
   }
   // user not found insert a new user
   const psw = await createSecurePassword(password);
-  console.log("psw", psw);
   if (!psw) {
     return new Response(null, { status: 500 });
   }

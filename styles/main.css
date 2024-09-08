@@ -1,6 +1,10 @@
 @import './theme.css';
+@import './components/header.css';
 @import './components/input.css';
+@import './components/box.css';
 @import './components/button.css';
+@import './components/avatar.css';
+@import './layout.css';
 
 
 html {
@@ -26,23 +30,7 @@ main {
 
 }
 
-header, footer {
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-header {
-    .avatar {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 40px;
-        margin: 0;
-        height: 40px;
-        border: 1px solid black;
-        padding: 4px;
-    }
-}
+
 .form-group {
     
     .form-input {

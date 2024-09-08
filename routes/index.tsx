@@ -5,10 +5,9 @@ import { ObjectId } from "npm:mongodb";
 import { TUser } from "../models/users.ts";
 import { Handlers, PageProps, RouteContext } from "$fresh/server.ts";
 import { ServerState } from "./_middleware.ts";
-import { Session, WithSession } from "deno_session";
-import { setRenderState } from "$fresh/src/server/rendering/preact_hooks.ts";
-
-//import { connectToCluster } from "../mongodb/connect-to-cluster.ts";
+import { WithSession } from "deno_session";
+import { Grocery } from "@/models/grocery.ts";
+import GroceryList from "@/islands/GroceryList.tsx";
 
 export const handler: Handlers<
   unknown,
@@ -42,6 +41,9 @@ export default function Home(props: PageProps<ServerState>) {
       <p>
         dd: {props.data?.username}, avatar: {props.data?.avatar}
       </p>
+
+      grocery items:
+      <GroceryList />
     </>
   );
 }

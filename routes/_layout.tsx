@@ -7,21 +7,25 @@ export default function MyLayout({ Component, state }: LayoutProps) {
   // console.log(state.session.get("user"));
   return (
     <main>
-      <header class="my-layout">
-        <a href="/">Home</a>
-        <Avatar avatar={avatar}></Avatar>
-        <nav>
-          <ul>
-            <li>
-              {authenticated ? "logout" : <a href="/login">Login</a>}
-            </li>
-            <li>
-              <a href="/register">Register</a>
-            </li>
-          </ul>
-        </nav>
+      <header class="header">
+        <div class="container">
+          <a class="logo" href="/">
+            <img src="images/logo.svg" alt="logo" />
+          </a>
+          {authenticated ? <Avatar avatar={avatar}></Avatar> : ""}
+          <nav>
+            <ul>
+              <li>
+                {authenticated ? "logout" : <a href="/login">Login</a>}
+              </li>
+              <li>
+                <a href="/register">Register</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </header>
-      <div class="wrapper">
+      <div class="page-wrapper">
         <Component />
       </div>
       <footer>

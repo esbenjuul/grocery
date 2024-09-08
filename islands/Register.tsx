@@ -1,11 +1,10 @@
-import { type Signal, signal } from "@preact/signals";
+import { signal } from "@preact/signals";
 import { Button, Input } from "@/components/index.ts";
 
 const message = signal("");
 
 export default function Register() {
   const onClick = (e: Event) => {
-    // e.preventDefault();
     message.value = "";
   };
   const onSubmit = async (e: Event) => {
@@ -36,7 +35,7 @@ export default function Register() {
     }
   };
   return (
-    <>
+    <section class="box">
       <p>{message.value}</p>
       <form method="post" class="form-group" onSubmit={(e) => onSubmit(e)}>
         <Input
@@ -66,6 +65,6 @@ export default function Register() {
 
         <Button onClick={(e) => onClick(e)}>Signup</Button>
       </form>
-    </>
+    </section>
   );
 }
