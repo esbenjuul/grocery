@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { db } from "../config/db.ts";
-import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
+import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 
 export type TUser<T> = {
   _id?: T;
