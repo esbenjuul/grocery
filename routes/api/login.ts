@@ -1,13 +1,19 @@
 import { Handlers } from "$fresh/server.ts";
-import { setCookie } from "std/http/cookie.ts";
 import { comparePasswords, User } from "../../models/users.ts";
-import { WithSession } from "deno_session";
+import { type WithSession } from "deno_session";
+
+export type UserSession = {
+  id?: string;
+  username?: string;
+  avatar?: string;
+  authenticated?: boolean;
+};
 
 export const handler: Handlers<unknown, WithSession<"user", "success">> = {
-  async POST(_req, _ctx) {
-    const { session } = _ctx.state;
-    const form = await _req.formData();
-    const url = new URL(_req.url);
+  async POST(req, ctx) {
+    const { session } = ctx.state;
+    const form = await req.formData();
+    const url = new URL(req.url);
     const username = String(form.get("username"));
     const password = String(form.get("password"));
     if (!username || !password) {
@@ -23,7 +29,7 @@ export const handler: Handlers<unknown, WithSession<"user", "success">> = {
       return new Response(null, { status: 400 });
     }
 
-    const headers = new Headers();
+    const headers = new Headers(req.headers);
     headers.set("location", "/");
 
     session.set("user", {
@@ -31,16 +37,6 @@ export const handler: Handlers<unknown, WithSession<"user", "success">> = {
       username: user.username,
       avatar: user.avatar,
       authenticated: true,
-    });
-
-    setCookie(headers, {
-      name: "auth",
-      value: user._id.toString(),
-      maxAge: 3600,
-      sameSite: "Lax",
-      domain: url.hostname,
-      path: "/",
-      secure: true,
     });
     return new Response(null, { status: 303, headers });
   },

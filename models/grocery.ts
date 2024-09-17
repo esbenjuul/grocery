@@ -1,4 +1,4 @@
-import { ObjectId } from "npm:mongodb";
+import { ObjectId } from "mongodb";
 import { db } from "../config/db.ts";
 
 export type TGrocery<T> = {

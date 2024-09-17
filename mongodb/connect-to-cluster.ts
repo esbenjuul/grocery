@@ -1,4 +1,4 @@
-import { MongoClient } from "npm:mongodb";
+import { MongoClient } from "mongodb";
 import { load } from "https://deno.land/std@0.212.0/dotenv/mod.ts";
 
 const env = await load();

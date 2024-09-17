@@ -1,4 +1,4 @@
-import { ObjectId } from "npm:mongodb";
+import { ObjectId } from "mongodb";
 import { db } from "../config/db.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
 

@@ -2,47 +2,54 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/_404.tsx";
-import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/_layout.tsx";
-import * as $3 from "./routes/_middleware.ts";
-import * as $4 from "./routes/api/grocery.ts";
-import * as $5 from "./routes/api/joke.ts";
-import * as $6 from "./routes/api/login.ts";
-import * as $7 from "./routes/api/register.ts";
-import * as $8 from "./routes/components/index.tsx";
-import * as $9 from "./routes/greet/[name].tsx";
-import * as $10 from "./routes/index.tsx";
-import * as $11 from "./routes/login/index.tsx";
-import * as $12 from "./routes/register/index.tsx";
-import * as $$0 from "./islands/Counter.tsx";
-import * as $$1 from "./islands/GroceryList.tsx";
-import * as $$2 from "./islands/Login.tsx";
-import * as $$3 from "./islands/Register.tsx";
+import * as $_404 from "./routes/_404.tsx";
+import * as $_app from "./routes/_app.tsx";
+import * as $_middleware from "./routes/_middleware.ts";
+import * as $api_grocery from "./routes/api/grocery.ts";
+import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_list from "./routes/api/list.ts";
+import * as $api_login from "./routes/api/login.ts";
+import * as $api_register from "./routes/api/register.ts";
+import * as $components_index from "./routes/components/index.tsx";
+import * as $greet_name_ from "./routes/greet/[name].tsx";
+import * as $index from "./routes/index.tsx";
+import * as $layout from "./routes/layout.tsx";
+import * as $login_index from "./routes/login/index.tsx";
+import * as $logout_index from "./routes/logout/index.tsx";
+import * as $register_index from "./routes/register/index.tsx";
+import * as $Counter from "./islands/Counter.tsx";
+import * as $GroceryList from "./islands/GroceryList.tsx";
+import * as $List from "./islands/List.tsx";
+import * as $Login from "./islands/Login.tsx";
+import * as $Register from "./islands/Register.tsx";
+import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_404.tsx": $0,
-    "./routes/_app.tsx": $1,
-    "./routes/_layout.tsx": $2,
-    "./routes/_middleware.ts": $3,
-    "./routes/api/grocery.ts": $4,
-    "./routes/api/joke.ts": $5,
-    "./routes/api/login.ts": $6,
-    "./routes/api/register.ts": $7,
-    "./routes/components/index.tsx": $8,
-    "./routes/greet/[name].tsx": $9,
-    "./routes/index.tsx": $10,
-    "./routes/login/index.tsx": $11,
-    "./routes/register/index.tsx": $12,
+    "./routes/_404.tsx": $_404,
+    "./routes/_app.tsx": $_app,
+    "./routes/_middleware.ts": $_middleware,
+    "./routes/api/grocery.ts": $api_grocery,
+    "./routes/api/joke.ts": $api_joke,
+    "./routes/api/list.ts": $api_list,
+    "./routes/api/login.ts": $api_login,
+    "./routes/api/register.ts": $api_register,
+    "./routes/components/index.tsx": $components_index,
+    "./routes/greet/[name].tsx": $greet_name_,
+    "./routes/index.tsx": $index,
+    "./routes/layout.tsx": $layout,
+    "./routes/login/index.tsx": $login_index,
+    "./routes/logout/index.tsx": $logout_index,
+    "./routes/register/index.tsx": $register_index,
   },
   islands: {
-    "./islands/Counter.tsx": $$0,
-    "./islands/GroceryList.tsx": $$1,
-    "./islands/Login.tsx": $$2,
-    "./islands/Register.tsx": $$3,
+    "./islands/Counter.tsx": $Counter,
+    "./islands/GroceryList.tsx": $GroceryList,
+    "./islands/List.tsx": $List,
+    "./islands/Login.tsx": $Login,
+    "./islands/Register.tsx": $Register,
   },
   baseUrl: import.meta.url,
-};
+} satisfies Manifest;
 
 export default manifest;

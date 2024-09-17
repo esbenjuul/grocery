@@ -34,7 +34,6 @@ export async function handler(
 
     ctx.state.token = access_token;
   } else if (!pathname.includes("/login")) {
-    // console.log("dd");
     // return new Response(null, {
     //   status: 307,
     //   headers: { Location: "/login" },

@@ -1,4 +1,4 @@
-import { MongoClient } from "npm:mongodb";
+import { MongoClient } from "mongodb";
 
 export class DatabaseConnection {
   public client: MongoClient;
@@ -6,10 +6,10 @@ export class DatabaseConnection {
     this.dbName = dbName;
     this.url = url;
     this.client = {} as MongoClient;
-    console.log("connected to MongoDB");
   }
   public async connect() {
     try {
+      console.log("connecting to MongoDB");
       const client = new MongoClient(this.url);
       await client.connect();
       this.client = client;
@@ -23,7 +23,7 @@ export class DatabaseConnection {
 }
 
 const dbName = Deno.env.get("DB_NAME") || "grocery";
-const dbHostUrl = Deno.env.get("DB_URI") || "mongodb://localhost:27017";
+const dbHostUrl = Deno.env.get("DB_URI") || "mongodb://127.0.0.1:27017";
 const db = new DatabaseConnection(dbName, dbHostUrl);
 await db.connect();
 export { db };
