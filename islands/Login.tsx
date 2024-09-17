@@ -31,7 +31,6 @@ export default function SignIn() {
           type="text"
           name="username"
           label="Username"
-          value={location?.hash.replace("#", "") || ""}
           class="form-group-input"
         >
         </Input>
