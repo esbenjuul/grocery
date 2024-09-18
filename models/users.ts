@@ -16,7 +16,7 @@ export const comparePasswords = async (
   user: TUser<ObjectId>,
   password: string,
 ) => {
-  return bcrypt.compare(password, user.password);
+  return bcrypt.compareSync(password, user.password);
 };
 
 export const createSecurePassword = async (password: string) => {

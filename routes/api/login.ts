@@ -16,6 +16,7 @@ export const handler: Handlers<unknown, WithSession<"user", "success">> = {
     const url = new URL(req.url);
     const username = String(form.get("username"));
     const password = String(form.get("password"));
+
     if (!username || !password) {
       return new Response(null, { status: 400 });
     }
@@ -30,6 +31,7 @@ export const handler: Handlers<unknown, WithSession<"user", "success">> = {
     }
 
     const headers = new Headers(req.headers);
+
     headers.set("location", "/");
 
     session.set("user", {
