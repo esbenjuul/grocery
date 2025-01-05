@@ -1,0 +1,23 @@
+.icon-button {
+    background-color: var(--color-background-interactive-01);
+    border-radius: 50%;
+    width: 32px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color .2s;
+
+    &:active {
+        background-color: var(--color-background-interactive-active-01);
+    }
+
+    &.large {
+        width: 64px
+    }
+    & > svg {
+        width: 50%;
+        height: 50%
+    }
+}

@@ -1,23 +1,32 @@
+import { BSON } from "mongodb";
 import { Handlers } from "$fresh/server.ts";
 import { WithSession } from "deno_session";
-import { Grocery, List } from "@/models/grocery.ts";
+import { createList, List } from "@/models/list.ts";
+import { UserSession } from "./login.ts";
+
+interface ListData {
+  name: string;
+}
 
 export const handler: Handlers<unknown, WithSession<"user", "success">> = {
   async POST(req, _ctx) {
     const { session } = _ctx.state;
-    console.log(session.get("user"));
-    //const form = await _req.formData();
-    // const url = new URL(_req.url);
-    // const item: List = {
-    //   name: r,
-    //   img:
-    //     "https://media.istockphoto.com/photos/tomato-isolated-on-white-background-picture-id466175630?k=6&m=466175630&s=612x612&w=0&h=fu_mQBjGJZIliOWwCR0Vf2myRvKWyQDsymxEIi8tZ38=",
-    //   category: "green",
-    //   icon: "tomato",
-    // };
+    const { id } = session.get("user") as UserSession;
 
-    // const newItem = await Grocery.insertOne(item);
+    const form = await req.formData();
 
-    // return new Response(JSON.stringify({ ok: true, item: newItem }), {});
+    console.log("form", form.get("name"));
+    const list = await createList({
+      name: form.get("name") as string,
+      owner: new BSON.ObjectId(id),
+    });
+    return new Response(JSON.stringify({ ok: true, item: list }), {});
+  },
+
+  async GET(req, _ctx) {
+    const { session } = _ctx.state;
+    const { id } = session.get("user") as UserSession;
+    const lists = await List.find({ owner: new BSON.ObjectId(id) }).toArray();
+    return new Response(JSON.stringify(lists), {});
   },
 };

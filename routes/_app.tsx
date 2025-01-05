@@ -18,6 +18,11 @@ export default function App({ Component }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;800&display=swap"
           rel="stylesheet"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        />
+
         <title>grocery</title>
       </head>
       <body>

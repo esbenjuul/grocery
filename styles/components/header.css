@@ -14,14 +14,6 @@ header, footer {
                 max-width: 100%;
             }
         }
-        .avatar {
-            border-radius: 50%;
-            overflow: hidden;
-            width: 40px;
-            margin: 0;
-            height: 40px;
-            border: 1px solid black;
-            padding: 4px;
-        }
+
     }
 }

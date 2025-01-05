@@ -1,6 +1,5 @@
 import { ComponentChildren } from "preact";
-import { LayoutProps } from "$fresh/server.ts";
-import { Avatar } from "@/components/header/Avatar.tsx";
+import { Avatar } from "@/components/index.ts";
 import { ServerState } from "@/routes/index.tsx";
 import { PageProps } from "$fresh/server.ts";
 
@@ -17,7 +16,9 @@ export default function Layout(props: Props) {
           <a class="logo" href="/">
             <img src="images/logo.svg" alt="logo" />
           </a>
-          {props.state.authenticated ? <Avatar avatar={"dd"}></Avatar> : ""}
+          {props.state.authenticated
+            ? <Avatar avatar={"dd"} title="test" subTitle="test2"></Avatar>
+            : ""}
           <nav>
             <ul>
               <li>

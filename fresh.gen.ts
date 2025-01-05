@@ -18,9 +18,11 @@ import * as $login_index from "./routes/login/index.tsx";
 import * as $logout_index from "./routes/logout/index.tsx";
 import * as $register_index from "./routes/register/index.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $Dialog from "./islands/Dialog.tsx";
 import * as $GroceryList from "./islands/GroceryList.tsx";
 import * as $List from "./islands/List.tsx";
 import * as $Login from "./islands/Login.tsx";
+import * as $Portal from "./islands/Portal.tsx";
 import * as $Register from "./islands/Register.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -44,9 +46,11 @@ const manifest = {
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/Dialog.tsx": $Dialog,
     "./islands/GroceryList.tsx": $GroceryList,
     "./islands/List.tsx": $List,
     "./islands/Login.tsx": $Login,
+    "./islands/Portal.tsx": $Portal,
     "./islands/Register.tsx": $Register,
   },
   baseUrl: import.meta.url,

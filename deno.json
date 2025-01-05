@@ -27,7 +27,9 @@
     "redis": "https://deno.land/x/redis/mod.ts",
     "@twind/core": "https://esm.sh/@twind/core@1.1.3",
     "@twind/preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4/",
-    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7/"
+    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7/",
+    "preact-animated-css": "npm:preact-animated-css@1.2.2/",
+    "classnames": "https://esm.sh/classnames@2.3.1"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
   "exclude": ["**/_fresh/*"]

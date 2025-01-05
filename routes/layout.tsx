@@ -1,10 +1,10 @@
 // routes/_layout.tsx
-import { LayoutProps } from "$fresh/server.ts";
-import { Avatar } from "@/components/header/Avatar.tsx";
+import { PageProps } from "$fresh/server.ts";
+import { Avatar } from "@/components/index.ts";
 import { ServerState } from "@/routes/_middleware.ts";
 
 export default function MyLayout(
-  { Component, state }: LayoutProps,
+  { Component, state }: PageProps<any, ServerState>,
 ) {
   const { avatar } = state?.session?.get("user");
   console.log("state", state);

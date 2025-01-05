@@ -16,7 +16,8 @@ export default function SignIn() {
         message.value = "wrong password or username";
       }
       if (response.ok) {
-        console.log("logged in", response.headers);
+        console.log("logged in", response);
+        window.location.href = response.url;
       }
     } catch (err) {
       console.error(err);

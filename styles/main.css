@@ -1,8 +1,11 @@
+@import './reset.css';
 @import './theme.css';
+@import './components/button.css';
+@import './components/icon-button.css';
 @import './components/header.css';
 @import './components/input.css';
+@import './components/dialog.css';
 @import './components/box.css';
-@import './components/button.css';
 @import './components/avatar.css';
 @import './layout.css';
 
@@ -45,4 +48,7 @@ main {
 
 .section {
     margin: 16px 0;
+}
+.svg-icon {
+    fill: var(--color-icon-primary)
 }
