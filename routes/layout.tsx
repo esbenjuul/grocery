@@ -6,9 +6,9 @@ import { ServerState } from "@/routes/_middleware.ts";
 export default function MyLayout(
   { Component, state }: PageProps<any, ServerState>,
 ) {
-  const { avatar } = state?.session?.get("user");
-  console.log("state", state);
-  console.log("avatar", avatar);
+  // const { avatar } = state?.session?.get("user");
+  //console.log("state", state);
+  // console.log("avatar", avatar);
   return (
     <main>
       <header class="header">

@@ -15,7 +15,7 @@ export const handler: Handlers<
     const headers = new Headers(req.headers);
     const { session } = ctx.state;
     session.delete("user");
-    headers.set("location", "/");
+    headers.set("location", "/login");
 
     return new Response(null, { status: 302, headers });
   },

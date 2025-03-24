@@ -1,7 +1,7 @@
 // routes/_middleware.ts
 
-import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { getCookies } from "std/http/cookie.ts";
+import { FreshContext } from "$fresh/server.ts";
+import { getCookies } from "$std/http/cookie.ts";
 import { Session } from "deno_session";
 
 type User = {
@@ -18,20 +18,20 @@ export type ServerState = {
 
 export async function handler(
   req: Request,
-  ctx: MiddlewareHandlerContext<ServerState>,
+  ctx: FreshContext<ServerState>,
 ) {
   const { pathname } = new URL(req.url);
   const cookies = getCookies(req.headers);
   const access_token = cookies.auth;
+  // console.log("cookie", access_token);
 
   if (["/", "/login"].includes(pathname) && !access_token) {
     // TODO: redirect to login;
-    console.log("path", pathname);
+    // console.log("path ee", pathname);
   }
 
   if (access_token) {
     // Here, we will have an actual lookup of user data in the future.
-
     ctx.state.token = access_token;
   } else if (!pathname.includes("/login")) {
     // return new Response(null, {

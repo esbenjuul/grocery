@@ -4,6 +4,7 @@
 .env.test.local
 .env.production.local
 .env.local
-
+mongodb_data
 # Fresh build directory
 _fresh/
+node_modules

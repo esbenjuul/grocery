@@ -10,8 +10,21 @@ import { WithSession } from "deno_session";
 import { Grocery } from "@/models/grocery.ts";
 import GroceryList from "@/islands/GroceryList.tsx";
 import List from "@/islands/List.tsx";
-import { ServerState, sessionHandler } from "@/controllers/common.handler.ts";
+import { sessionHandler } from "@/controllers/common.handler.ts";
 import re from "https://esm.sh/v135/preact-render-to-string@6.3.1/X-ZS8q/denonext/preact-render-to-string.mjs";
+
+export type ServerState = {
+  id?: ObjectId;
+  username?: string;
+  avatar?: string;
+  authenticated?: boolean;
+};
+
+type SessionState = {
+  id: ObjectId;
+  username: string;
+  avatar: string;
+};
 
 export const handler: Handlers<
   ServerState,
@@ -20,18 +33,12 @@ export const handler: Handlers<
   GET: async (req, ctx) => await sessionHandler(req, ctx),
 };
 
-export default function Home(
+export default function Profile(
   props: PageProps<ServerState, WithSession<"user", "success">>,
 ) {
   return (
-    <>
-      {props.data.authenticated
-        ? (
-          <Layout {...props}>
-            <List data={props.data} />
-          </Layout>
-        )
-        : "not auth"}
-    </>
+    <Layout {...props}>
+      Profile
+    </Layout>
   );
 }

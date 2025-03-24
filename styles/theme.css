@@ -19,7 +19,10 @@
 
     --color-icon-primary: var(--color-purple-700);
 
+    --color-border: #EAECF0;
+
     --color-background-01: #f5f5f5;
+    --color-background-02: #FCFCFD;
     --color-background-03: #fefefe;
 
     --color-background-interactive-01: #ede3fd;
@@ -32,5 +35,7 @@
 
     --color-font-cta: var(--color-white);
     
-
+    /* border-radius */
+    --rounding-01: 6px;
+    --rounding-02: 12px;
 }

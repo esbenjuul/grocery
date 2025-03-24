@@ -46,6 +46,12 @@ export default function Register() {
           required
         />
         <Input
+          type="text"
+          name="email"
+          label="Email"
+          class="form-group-input"
+        />
+        <Input
           type="password"
           name="password"
           label="Password"

@@ -5,6 +5,7 @@ import { WithSession } from "deno_session";
 export type ServerState = {
   id?: ObjectId;
   username?: string;
+  email?: string;
   avatar?: string;
   authenticated?: boolean;
 };
@@ -18,6 +19,7 @@ export const sessionHandler = async (
 
   if (!session.has("user")) {
     session.set("user", {});
+
     return await ctx.render({ authenticated: false });
   }
   const { username, avatar, id } = session.get("user") as SessionState;
@@ -26,6 +28,16 @@ export const sessionHandler = async (
       username: username,
       avatar: avatar,
       authenticated: true,
+    });
+  }
+
+  if (req.url.indexOf("login") === -1) {
+    const headers = new Headers({
+      location: "/login",
+    });
+    return new Response(null, {
+      status: 302,
+      headers,
     });
   }
   return ctx.render({ username: "none", avatar: "none" });

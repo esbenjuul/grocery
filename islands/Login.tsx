@@ -44,6 +44,7 @@ export default function SignIn() {
         </Input>
         <Button onClick={() => onClick()}>Login</Button>
       </form>
+      <a href="/register">Need an account?</a>
     </>
   );
 }

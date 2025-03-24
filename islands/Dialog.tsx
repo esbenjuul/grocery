@@ -7,6 +7,7 @@ import { Button } from "@/components/index.ts";
 interface DialogProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
+  beforeClose?: () => void;
   trigger?: ComponentChildren;
   title: string;
   description?: string;
@@ -19,6 +20,7 @@ export function Dialog(
   {
     isOpen,
     onOpenChange,
+    beforeClose,
     trigger,
     title,
     description,
@@ -27,7 +29,7 @@ export function Dialog(
     children,
   }: DialogProps,
 ) {
-  // const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,14 +48,18 @@ export function Dialog(
 
     if (isOpen) {
       content.addEventListener("transitionend", handleTransitionEnd);
-      setTimeout(() => content.classList.add("dialog-open"), 50);
+      setTimeout(() => {
+        setOpen(true);
+      }, 50);
     }
   }, [isOpen]);
 
   const handleClose = () => {
     const content = contentRef.current;
     if (!content) return;
-    content.classList.remove("dialog-open");
+    if (beforeClose) {
+      beforeClose();
+    }
   };
 
   return (
@@ -63,7 +69,7 @@ export function Dialog(
       {isOpen && (
         <Portal>
           <div
-            class="dialog-overlay"
+            className={`dialog-overlay ${open ? "dialog-open" : ""}`}
             ref={contentRef}
           >
             <div class="dialog-content">

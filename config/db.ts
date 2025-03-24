@@ -14,7 +14,7 @@ export class DatabaseConnection {
       await client.connect();
       this.client = client;
     } catch (err) {
-      console.error(err);
+      console.error("DB error", err);
     }
   }
   public getDatabase() {
@@ -23,7 +23,8 @@ export class DatabaseConnection {
 }
 
 const dbName = Deno.env.get("DB_NAME") || "grocery";
-const dbHostUrl = Deno.env.get("DB_URI") || "mongodb://127.0.0.1:27017";
+const dbHostUrl = Deno.env.get("DB_URI") ||
+  "mongodb://root:example@localhost:27017/grocery?authSource=admin";
 const db = new DatabaseConnection(dbName, dbHostUrl);
 await db.connect();
 export { db };

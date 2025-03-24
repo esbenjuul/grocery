@@ -33,10 +33,10 @@ export const handler: Handlers<unknown, WithSession<"user", "success">> = {
     const headers = new Headers(req.headers);
 
     headers.set("location", "/");
-
     session.set("user", {
       id: user._id,
       username: user.username,
+      email: user.email,
       avatar: user.avatar,
       authenticated: true,
     });

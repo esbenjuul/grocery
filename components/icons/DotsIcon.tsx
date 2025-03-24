@@ -1,6 +1,6 @@
 import { JSX } from "preact";
 
-export function DotsIcon(props: JSX.HTMLAttributes<HTMLButtonElement>) {
+export function DotsIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

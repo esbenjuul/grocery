@@ -1,46 +1,62 @@
 import { ComponentChildren } from "preact";
-import { Avatar } from "@/components/index.ts";
-import { ServerState } from "@/routes/index.tsx";
+import {
+  ArrowLeftIcon,
+  Avatar,
+  DotsIcon,
+  IconButton,
+} from "@/components/index.ts";
+import { ServerState } from "@/controllers/common.handler.ts";
 import { PageProps } from "$fresh/server.ts";
+import { WithSession } from "deno_session";
 
 type Props = {
   children: ComponentChildren;
   state: ServerState;
 };
 
-export default function Layout(props: Props) {
+const isSubpage = (route: string) => true;
+
+export default function Layout(
+  props: PageProps<ServerState, WithSession<"user", "success">>,
+) {
   return (
     <main>
       <header class="header">
         <div class="container">
-          <a class="logo" href="/">
-            <img src="images/logo.svg" alt="logo" />
-          </a>
-          {props.state.authenticated
-            ? <Avatar avatar={"dd"} title="test" subTitle="test2"></Avatar>
-            : ""}
-          <nav>
-            <ul>
-              <li>
-                {props.state.authenticated
-                  ? <a href="/logout">Logout</a>
-                  : <a href="/login">Login</a>}
-              </li>
-              {props.state.authenticated ? "" : (
-                <li>
-                  <a href="/register">Register</a>
-                </li>
-              )}
-            </ul>
-          </nav>
+          {isSubpage(props.route)
+            ? (
+              <a href="/">
+                <IconButton>
+                  <ArrowLeftIcon />
+                </IconButton>
+              </a>
+            )
+            : (
+              <a href="/profile">
+                <Avatar
+                  avatar={"dd"}
+                  title={props.data.username || ""}
+                  subTitle={props.data.email || ""}
+                >
+                </Avatar>
+              </a>
+            )}
+          <h1>Title</h1>
+          <Avatar></Avatar>
         </div>
       </header>
-      <div class="page-wrapper">
+      <div class="page-wrapper container">
+        <nav>
+          <ul>
+            <li>
+              {props.data.authenticated
+                ? <a href="/logout">Logout</a>
+                : <a href="/login">Login</a>}
+            </li>
+          </ul>
+        </nav>
         {props.children}
       </div>
-      <footer>
-        footer
-      </footer>
     </main>
   );
 }

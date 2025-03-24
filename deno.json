@@ -3,6 +3,7 @@
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "start": "deno run -A --watch=static/,routes/ --env dev.ts",
+    "local:db": "docker compose -f ./mongo-docker.yaml up -d",
     "build:css": "deno run --allow-env=DENO_ENV --allow-read --allow-write build-css.ts",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
@@ -11,9 +12,15 @@
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "imports": {
     "@/": "./",
-    "$fresh/": "https://deno.land/x/fresh@1.6.8/",
-    "preact": "https://esm.sh/preact@10.19.6",
-    "preact/": "https://esm.sh/preact@10.19.6/",
+    "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "$std/path": "jsr:@std/path@^1.0.8",
+    "autoprefixer": "npm:autoprefixer@^10.4.21",
+    "postcss-csso": "npm:postcss-csso@^6.0.1",
+    "postcss-custom-media": "npm:postcss-custom-media@^11.0.5",
+    "postcss-preset-env": "npm:postcss-preset-env@^10.1.5",
+    "preact": "https://esm.sh/preact@10.22.0",
+    "preact/": "https://esm.sh/preact@10.22.0/",
+    "$std/": "https://deno.land/std@0.224.0",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
@@ -21,7 +28,6 @@
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
     "postcss/": "https://deno.land/x/postcss@8.4.16/",
-    "std/": "https://deno.land/std@0.160.0/",
     "deno_session": "https://deno.land/x/fresh_session@beta-0.3.0/mod.ts",
     "mongodb": "npm:mongodb@6.9.0",
     "redis": "https://deno.land/x/redis/mod.ts",
@@ -29,8 +35,10 @@
     "@twind/preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4/",
     "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7/",
     "preact-animated-css": "npm:preact-animated-css@1.2.2/",
-    "classnames": "https://esm.sh/classnames@2.3.1"
+    "classnames": "https://esm.sh/classnames@2.3.1",
+    "$std/async": "jsr:@std/async@^1.0.11"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
-  "exclude": ["**/_fresh/*"]
+  "exclude": ["**/_fresh/*"],
+  "nodeModulesDir": "auto"
 }

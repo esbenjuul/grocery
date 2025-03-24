@@ -16,7 +16,7 @@ export const handler: Handlers<
 
 export default function Home(props: PageProps<TUser<ObjectId>>) {
   return (
-    <Layout state={props.data}>
+    <Layout {...props}>
       <div class="container">
         <section class="box">
           <Login></Login>
